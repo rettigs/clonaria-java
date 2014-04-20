@@ -69,42 +69,38 @@ public class World{
 	 */
 	public boolean placeBlockAt(int x, int y, int layer, String blockModel){
 		if(!this.isEmptyAt(x, y, layer)) return false;
-		
-		boolean placeable = true;
 		BlockModel block = core.blockModels.get(blockModel);
-		BlockModel otherBlock;
-		
-		Core.logf("Attempting to place %s at %d, %d", blockModel, x, y);
-		Core.log(block.getIcanattachto());
-
-//		if(block.iCanAttachFront()){
-//			otherBlock = this.getBlockAt(x, y, layer+1);
-//			if(otherBlock != null && otherBlock.theyCanAttachBack()) placeable = true;
-//			Core.log("yay");
-//		}else if(block.iCanAttachBack()){
-//			otherBlock = this.getBlockAt(x, y, layer-1);
-//			if(otherBlock != null && otherBlock.theyCanAttachFront()) placeable = true;
-//			Core.log("yay");
-//		}else if(block.iCanAttachTop()){
-//			otherBlock = this.getBlockAt(x, y+1, layer);
-//			if(otherBlock != null && otherBlock.theyCanAttachBottom()) placeable = true;
-//			Core.log("yay");
-//		}else if(block.iCanAttachRight()){
-//			otherBlock = this.getBlockAt(x+1, y, layer);
-//			if(otherBlock != null && otherBlock.theyCanAttachLeft()) placeable = true;
-//			Core.log("yay");
-//		}else if(block.iCanAttachBottom()){
-//			otherBlock = this.getBlockAt(x, y-1, layer);
-//			if(otherBlock != null && otherBlock.theyCanAttachTop()) placeable = true;
-//			Core.log("yay");
-//		}else if(block.iCanAttachLeft()){
-//			otherBlock = this.getBlockAt(x-1, y, layer);
-//			if(otherBlock != null && otherBlock.theyCanAttachRight()) placeable = true;
-//			Core.log("yay");
-//		}
-		
-		if(placeable) return setBlockAt(x, y, layer, block);
+		if(canAttach(x, y, layer, block)) return setBlockAt(x, y, layer, block);
 		else return false;
+	}
+
+	public boolean canAttach(int x, int y, int layer, BlockModel block){
+		BlockModel otherBlock;
+		if(block.iCanAttachFront()){
+			otherBlock = this.getBlockAt(x, y, layer+1);
+			if(otherBlock != null && otherBlock.theyCanAttachBack()) return true;
+		}
+		if(block.iCanAttachBack()){
+			otherBlock = this.getBlockAt(x, y, layer-1);
+			if(otherBlock != null && otherBlock.theyCanAttachFront()) return true;
+		}
+		if(block.iCanAttachTop()){
+			otherBlock = this.getBlockAt(x, y+1, layer);
+			if(otherBlock != null && otherBlock.theyCanAttachBottom()) return true;
+		}
+		if(block.iCanAttachRight()){
+			otherBlock = this.getBlockAt(x+1, y, layer);
+			if(otherBlock != null && otherBlock.theyCanAttachLeft()) return true;
+		}
+		if(block.iCanAttachBottom()){
+			otherBlock = this.getBlockAt(x, y-1, layer);
+			if(otherBlock != null && otherBlock.theyCanAttachTop()) return true;
+		}
+		if(block.iCanAttachLeft()){
+			otherBlock = this.getBlockAt(x-1, y, layer);
+			if(otherBlock != null && otherBlock.theyCanAttachRight()) return true;
+		}
+		return false;
 	}
 	
 	/**

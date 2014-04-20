@@ -151,64 +151,62 @@ public class BlockModel extends Model{
 	}
 	
 	public boolean iCanAttachFront(){
-		Core.log(this.type);
-		Core.log(this.solid);
-		if((this.icanattachto & 1) != 0) return true;
+		if((getIcanattachto() & 1) != 0) return true;
 		else return false;
 	}
 	
 	public boolean iCanAttachBack(){
-		if((this.icanattachto & 2) != 0) return true;
+		if((getIcanattachto() & 2) != 0) return true;
 		else return false;
 	}
 	
 	public boolean iCanAttachTop(){
-		if((this.icanattachto & 4) != 0) return true;
+		if((getIcanattachto() & 4) != 0) return true;
 		else return false;
 	}
 	
 	public boolean iCanAttachRight(){
-		if((this.icanattachto & 8) != 0) return true;
+		if((getIcanattachto() & 8) != 0) return true;
 		else return false;
 	}
 	
 	public boolean iCanAttachBottom(){
-		if((this.icanattachto & 16) != 0) return true;
+		if((getIcanattachto() & 16) != 0) return true;
 		else return false;
 	}
 	
 	public boolean iCanAttachLeft(){
-		if((this.icanattachto & 32) != 0) return true;
+		if((getIcanattachto() & 32) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachFront(){
-		if((this.theycanattachto & 1) != 0) return true;
+		if((getTheycanattachto() & 1) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachBack(){
-		if((this.theycanattachto & 2) != 0) return true;
+		if((getTheycanattachto() & 2) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachTop(){
-		if((this.theycanattachto & 4) != 0) return true;
+		if((getTheycanattachto() & 4) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachRight(){
-		if((this.theycanattachto & 8) != 0) return true;
+		if((getTheycanattachto() & 8) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachBottom(){
-		if((this.theycanattachto & 16) != 0) return true;
+		if((getTheycanattachto() & 16) != 0) return true;
 		else return false;
 	}
 	
 	public boolean theyCanAttachLeft(){
-		if((this.theycanattachto & 32) != 0) return true;
+		if((getTheycanattachto() & 32) != 0) return true;
 		else return false;
 	}
 }

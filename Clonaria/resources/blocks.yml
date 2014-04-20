@@ -22,9 +22,9 @@ normal: true
 #  8: right
 # 16: bottom
 # 32: left
-# For example, a torch may have a icanattachto mask of 1+8+16+32=57 because it can attach to the front, sides, and tops of other blocks.  A wood block may have a theycanattachto mask of 1+2+4+8+16+32=64 because you can attach blocks to any part of it.  A cloud block may have an icanattachto mask of 64 and a theycanattachto mask of 0 if it can be placed anywhere, but can't have anything attached to it.
-icanattachto: 64
-theycanattachto: 64
+# For example, a torch may have a icanattachto mask of 1+8+16+32=57 because it can attach to the front, sides, and tops of other blocks.  A wood block may have a theycanattachto mask of 1+2+4+8+16+32=63 because you can attach blocks to any part of it.  A cloud block may have an icanattachto mask of 63 and a theycanattachto mask of 0 if it can be placed anywhere, but can't have anything attached to it.
+icanattachto: 63
+theycanattachto: 63
 
 # Whether the block breaks when it is no longer attached to anything.
 breakondetach: false
